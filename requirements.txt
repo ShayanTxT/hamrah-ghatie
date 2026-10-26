@@ -2,6 +2,6 @@
 # روی ویندوز ۱۰/۱۱ ۶۴بیتی با Python 3.11 x64 تست/ساخته میشوند.
 PySide6>=6.8,<7
 pypdf>=5.0
-psutil>=5.9
+psutil>=7.2.2
 cryptography>=42
 zstandard>=0.22
