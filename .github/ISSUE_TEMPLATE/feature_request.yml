@@ -1,0 +1,75 @@
+name: "✨ پیشنهاد قابلیت / Feature request"
+description: "ایدهٔ جدیدی برای برنامه پیشنهاد دهید / Suggest an idea"
+title: "[FEATURE] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        قبل از نوشتن، لطفاً [نقشهٔ ۵ مرحلهای](https://github.com/ShayanTxT/hamrah-ghatie/blob/main/README.en.md) و
+        [قانون طلایی آفلاین بودن](https://github.com/ShayanTxT/hamrah-ghatie/blob/main/CONTRIBUTING.md) را ببینید.
+
+        **یادآوری مهم:** هر پیشنهادی که نیاز به سرویس ابری، API اینترنتی، CDN یا بررسی آپدیت خودکار داشته باشد،
+        با فلسفهٔ پروژه سازگار نیست.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: "مشکلی که میخواهید حل شود / Problem"
+      description: "چه دردسریموقع قطعی دارید؟ / What pain during a blackout does this solve?"
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: "راهحل پیشنهادی / Proposed solution"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: stage
+    attributes:
+      label: "مربوط به کدام مرحله / Related stage"
+      options:
+        - "۱ — داشبورد وضعیت اتصال"
+        - "۲ — کیف آمادگی"
+        - "۳ — کتابخانهٔ آفلاین"
+        - "۴ — دستیار هوش مصنوعی"
+        - "۵ — شبکهٔ محلی"
+        - "رابط کاربری / UI و تم"
+        - "بستهبندی و CI / Packaging"
+        - "سایر / Other"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: offline
+    attributes:
+      label: "نیاز به اینترنت / Does it need internet?"
+      options:
+        - "خیر، کاملاً آفلاین / No, fully offline"
+        - "فقط در مرحلهٔ آمادهسازی و با شروع کاربر / Only during prep, user-initiated"
+        - "بله (احتمالاً رد میشود) / Yes (likely rejected)"
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: "گزینههای دیگر / Alternatives considered"
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: "توضیحات اضافه، لینک، عکس / Extra context"
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: "چکلیست / Checklist"
+      options:
+        - label: "مطمئن شدم این قابلیت قبلاً درخواست نشده است."
+          required: true
+        - label: "آفلاین بودن برنامه را نقض نمیکند."
+          required: true

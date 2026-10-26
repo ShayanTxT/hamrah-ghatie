@@ -1,0 +1,17 @@
+blank_issues_enabled: false
+contact_links:
+  - name: "💬 پرسش و گفتگو / Questions & Discussions"
+    url: "https://github.com/ShayanTxT/hamrah-ghatie/discussions"
+    about: "برای سؤال، ایده، و تجربههای قطعی اینترنت / Ask questions and share ideas here."
+  - name: "📖 مستندات فارسی / Persian docs"
+    url: "https://github.com/ShayanTxT/hamrah-ghatie/blob/main/README.fa.md"
+    about: "راهنمای کامل فارسی شامل عیبیابی / Full Persian guide including troubleshooting."
+  - name: "📖 English documentation"
+    url: "https://github.com/ShayanTxT/hamrah-ghatie/blob/main/README.en.md"
+    about: "Full English guide and troubleshooting."
+  - name: "🔒 گزارش امنیتی / Security issue"
+    url: "https://github.com/ShayanTxT/hamrah-ghatie/security/advisories/new"
+    about: "آسیبپذیریها را خصوصی گزارش دهید / Report vulnerabilities privately."
+  - name: "🤝 مشارکت / Contributing"
+    url: "https://github.com/ShayanTxT/hamrah-ghatie/blob/main/CONTRIBUTING.md"
+    about: "قبل از اولین PR بخوانید / Read before your first pull request."

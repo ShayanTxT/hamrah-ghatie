@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "اگر از همراه قطعی استفاده کردید، لطفاً این پروژه را ارجاع دهید. / If you use Hamrah Ghatie, please cite it."
+title: "Hamrah Ghatie (همراه قطعی)"
+type: software
+authors:
+  - given-names: "Shayan"
+    name-particle: "TxT"
+    name: "ShayanTxT"
+    alias: "shayan.txt"
+    website: "https://github.com/ShayanTxT"
+version: 1.0.0
+date-released: 2026-10-26
+url: "https://github.com/ShayanTxT/hamrah-ghatie"
+repository-code: "https://github.com/ShayanTxT/hamrah-ghatie"
+license: MIT
+abstract: >-
+  A portable, offline-first Windows desktop application for internet
+  blackouts: connectivity monitoring, a resumable readiness kit, an offline
+  Wikipedia (ZIM) and full-text Persian search library, a local GGUF/llama.cpp
+  assistant, and encrypted peer-to-peer LAN chat and file transfer.
+keywords:
+  - offline-first
+  - internet blackout
+  - Persian
+  - RTL
+  - PySide6
+  - ZIM
+  - Kiwix
+  - llama.cpp
+  - GGUF
+  - SQLite FTS5
+  - LAN

@@ -1,0 +1,28 @@
+changelog:
+  exclude:
+    labels:
+      - automated
+      - dependencies
+      - wontfix
+    authors:
+      - dependabot[bot]
+  categories:
+    - title: "✨ قابلیتهای جدید / Features"
+      labels:
+        - enhancement
+        - offline
+    - title: "🐛 رفع اشکال / Bug fixes"
+      labels:
+        - bug
+    - title: "📚 مستندات / Documentation"
+      labels:
+        - documentation
+        - docs
+    - title: "⚙️ بستهبندی و CI / Build & CI"
+      labels:
+        - packaging
+        - dependencies
+        - automated
+    - title: "🧩 سایر تغییرات / Other changes"
+      labels:
+        - "*"

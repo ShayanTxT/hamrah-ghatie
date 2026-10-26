@@ -1,0 +1,33 @@
+# خطوط و کدگذاری
+* text=auto eol=lf
+*.py text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.toml text eol=lf
+*.spec text eol=lf
+*.sh text eol=lf
+*.bat text eol=crlf
+*.ps1 text eol=crlf
+*.txt text eol=lf
+
+# فایلهای باینری (نباید تبدیل خطوط شوند)
+*.ttf binary
+*.otf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.ico binary
+*.zip binary
+*.zim binary
+*.gguf binary
+*.db binary
+*.exe binary
+*.dll binary
+*.so binary
+*.pdf binary
+
+# اسناد/دادههای حجیم بهعنوان generated علامتگذاری میشوند تا در آمار زبانها نیایند
+samples/*.zim linguist-generated=true
+docs/screenshots/*.png linguist-generated=true
+.github/assets/*.png linguist-generated=true

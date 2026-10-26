@@ -1,0 +1,52 @@
+# --- محیط پایتون / Python ---
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# --- خروجی ساخت / Build artifacts ---
+build/
+dist/
+*.zip
+*.exe
+*.dll
+*.so
+*.dylib
+*.manifest
+*.spec.bak
+
+# --- دادههای کاربر (هرگز کامیت نشوند) ---
+data/
+*.db
+*.db-wal
+*.db-shm
+*.log
+*.part
+settings.json
+identity.json
+peers.json
+
+# --- فایلهای حجیم که کاربر دانلود میکند ---
+*.gguf
+*.zim
+!samples/*.zim
+*.pdf
+!docs/*.pdf
+
+# --- سیستمعامل / OS ---
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*~
+
+# --- ویرایشگرها ---
+.idea/
+.vscode/
+*.code-workspace

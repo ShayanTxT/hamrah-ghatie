@@ -1,0 +1,111 @@
+name: "🐛 گزارش باگ / Bug report"
+description: "خرابی برنامهای را گزارش کنید / Report something that is broken"
+title: "[BUG] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ممنون از گزارش! لطفاً قبل از ادامه [بخش عیبیابی README](https://github.com/ShayanTxT/hamrah-ghatie/blob/main/README.fa.md) را ببینید.
+        **هیچ اطلاعات خصوصی (کد جفتسازی، `identity.json`، `peers.json`) نفرستید.**
+
+        Thanks! Please check the [troubleshooting section](https://github.com/ShayanTxT/hamrah-ghatie/blob/main/README.en.md) first.
+        **Never post pairing codes or identity files.**
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: "خلاصهٔ مشکل / Summary"
+      description: "یک جمله بگویید چه اتفاقی افتاد / What happened in one sentence"
+      placeholder: "مثلاً: هنگام وارد کردن فایل ZIM برنامه پیام «فایل معتبر نیست» میدهد."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: "سیستمعامل / OS"
+      options:
+        - "Windows 11 (64-bit)"
+        - "Windows 10 (64-bit)"
+        - "Linux (فقط توسعه / dev only)"
+        - "macOS (فقط توسعه / dev only)"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: build
+    attributes:
+      label: "نوع اجرا / How you run it"
+      options:
+        - "exe پرتابل ساختهشده / built portable exe"
+        - "سورس پایتون / Python source"
+        - "نمیتوانم اجرا کنم / cannot start at all"
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: "نسخهٔ برنامه / Version"
+      description: "از پنجرهٔ برنامه یا CHANGELOG.md"
+      placeholder: "1.0.0"
+    validations:
+      required: true
+
+  - type: input
+    id: python
+    attributes:
+      label: "نسخهٔ پایتون (فقط اگر از سورس اجرا میکنید) / Python version"
+      placeholder: "3.11.9"
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: "گامهای بازتولید / Steps to reproduce"
+      description: "شمارهگذاری کنید / Numbered steps"
+      placeholder: |
+        1. برنامه را باز کردم...
+        2. روی ... کلیک کردم...
+        3. ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: "رفتار مورد انتظار / Expected behavior"
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: "رفتار واقعی (پیام فارسی دقیق) / Actual behavior"
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: "لاگ فنی / Technical log"
+      description: "۱۵ خط آخر data/logs/app.log یا data/logs/llama.log"
+      render: shell
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: "اسکرینشات / Screenshots"
+      description: "در صورت وجود، عکس بچسبانید / Drag & drop images here"
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: "چکلیست / Checklist"
+      options:
+        - label: "بخش عیبیابی README را خواندم."
+          required: true
+        - label: "اطلاعات خصوصی (کد جفتسازی، کلیدها، فایلهای شخصی) را پاک کردم."
+          required: true
+        - label: "با آخرین نسخه (main) هم امتحان کردم."
+          required: false

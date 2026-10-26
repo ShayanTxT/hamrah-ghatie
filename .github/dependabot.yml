@@ -1,0 +1,24 @@
+version: 2
+updates:
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "sunday"
+      time: "04:00"
+      timezone: "Asia/Tehran"
+    open-pull-requests-limit: 5
+    labels: ["dependencies", "automated"]
+    commit-message:
+      prefix: "build(deps)"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "sunday"
+      time: "04:00"
+      timezone: "Asia/Tehran"
+    labels: ["dependencies", "automated"]
+    commit-message:
+      prefix: "ci(deps)"

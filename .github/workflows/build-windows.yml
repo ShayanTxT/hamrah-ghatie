@@ -1,0 +1,105 @@
+name: Build Windows portable
+
+on:
+  workflow_dispatch:
+    inputs:
+      with_libzim:
+        description: 'Bundle optional libzim (GPLv3) ZIM fallback — adds ~21 MB'
+        type: boolean
+        default: false
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-windows-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11 x64
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          architecture: 'x64'
+          cache: pip
+          cache-dependency-path: |
+            requirements.txt
+            pyproject.toml
+
+      - name: Install dependencies
+        shell: pwsh
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -r requirements-build.txt
+          pip install pytest
+          if ("${{ inputs.with_libzim }}" -eq "true") {
+            pip install -r requirements-optional.txt
+          } else {
+            Write-Host "libzim (optional, GPLv3) skipped — native ZIM reader is used."
+          }
+
+      - name: Run tests
+        run: python -m pytest -q
+
+      - name: Package with PyInstaller
+        run: pyinstaller --noconfirm --clean hamrah-ghatie.spec
+
+      - name: Assemble portable folder
+        shell: pwsh
+        run: |
+          $src = "dist/HamrahGhatie"
+          $dst = "dist/همراه قطعی"
+          if (Test-Path $dst) { Remove-Item -Recurse -Force $dst }
+          Move-Item $src $dst
+
+          $dirs = @("downloads", "pages", "library", "library/zim", "models",
+                    "bin", "incoming", "exports", "logs", "tmp")
+          foreach ($d in $dirs) {
+            New-Item -ItemType Directory -Force -Path (Join-Path $dst "data/$d") | Out-Null
+          }
+          New-Item -ItemType Directory -Force -Path (Join-Path $dst "docs") | Out-Null
+          New-Item -ItemType Directory -Force -Path (Join-Path $dst "samples") | Out-Null
+
+          $docs = @("README.md", "README.fa.md", "README.en.md", "LICENSE",
+                    "LICENSE-THIRD-PARTY.md", "CHANGELOG.md", "CONTRIBUTING.md",
+                    "SECURITY.md", "SUPPORT.md", "CODE_OF_CONDUCT.md")
+          foreach ($f in $docs) { Copy-Item $f $dst }
+          Copy-Item "docs/ARCHITECTURE.md" (Join-Path $dst "docs")
+          Copy-Item "docs/screenshots" (Join-Path $dst "docs") -Recurse
+          Copy-Item "samples/*.zim" (Join-Path $dst "samples")
+          "فایل اجرایی: HamrahGhatie.exe  |  مستندات: README.fa.md" |
+            Out-File -Encoding utf8 (Join-Path $dst "data/راهنما.txt")
+
+          Compress-Archive -Path $dst -DestinationPath "dist/hamrah-ghatie-portable-win-x64.zip" -Force
+          (Get-FileHash "dist/hamrah-ghatie-portable-win-x64.zip" -Algorithm SHA256).Hash |
+            Out-File -Encoding utf8 "dist/SHA256SUMS.txt"
+          Write-Host "SHA256: $(Get-Content dist/SHA256SUMS.txt)"
+
+      - name: Upload portable artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: hamrah-ghatie-portable-windows-x64
+          path: |
+            dist/hamrah-ghatie-portable-win-x64.zip
+            dist/SHA256SUMS.txt
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Attach to GitHub Release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/hamrah-ghatie-portable-win-x64.zip
+            dist/SHA256SUMS.txt
+          generate_release_notes: true
+          body_path: CHANGELOG.md
