@@ -3,5 +3,5 @@
 PySide6>=6.8,<7
 pypdf>=5.0
 psutil>=5.9
-cryptography>=42
+cryptography>=50.0.2
 zstandard>=0.22
